@@ -1,0 +1,50 @@
+#npc-looktype{
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+#npc-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.color-palette {
+    border-top: 1px solid hsl(0deg 0% 0% / 25%);
+    border-left: 1px solid hsl(0deg 0% 0% / 25%);
+    border-right: 1px solid #636363;
+    border-bottom: 1px solid #636363;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px;
+}
+
+.color-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.color-row:last-child {
+    margin-bottom: 0;
+}
+
+.color-cell {
+    width: 100%;
+    height: 14px;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.color-cell:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.color-cell.selected {
+    border: 2px solid #fff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}

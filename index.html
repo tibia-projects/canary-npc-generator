@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canary NPC Creator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="looktype.css">
+
+    <style>
+        *{margin: 0; padding: 0;}
+
+        /* Chrome, Edge and Safari */
+        *::-webkit-scrollbar {
+        height: 7px;
+        width: 7px;
+        }
+        *::-webkit-scrollbar-track {
+        border-radius: 0px;
+        background-color: #656565;
+        }
+
+        *::-webkit-scrollbar-track:hover {
+        background-color: #656565;
+        }
+
+        *::-webkit-scrollbar-track:active {
+        background-color: #656565;
+        }
+
+        *::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #929292;
+        }
+
+        *::-webkit-scrollbar-thumb:hover {
+        background-color: #929292;
+        }
+
+        *::-webkit-scrollbar-thumb:active {
+        background-color: #929292;
+        }
+
+        body{
+            background: url(assets/imgs/bg.png) repeat;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        button{
+            border-top: 1px solid #636363;
+            border-left: 1px solid #636363;
+            border-right: 1px solid hsl(0deg 0% 0% / 25%);
+            border-bottom: 1px solid hsl(0deg 0% 0% / 25%);
+            padding: 10px 20px;
+            background: hsl(0deg 0% 100% / 2%);
+            color: #cecece;
+        }
+
+        button:active{
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 10px 20px;
+            background: hsla(0, 0%, 0%, 0.349);
+            color: #cecece;
+        }
+
+        button[class="active"]{
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 10px 20px;
+            background: hsl(0deg 0% 100% / 2%);
+            color: #cecece;
+        }
+
+        label{
+            color: #cecece;
+        }
+
+        input, select{
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 10px 20px;
+            background: #353535;
+            color: #cecece;
+        }
+
+        .input-group{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .checkGroup{
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 10px 10px;
+            background: hsl(0deg 0% 0% / 8%);
+            color: #cecece;
+            display: flex;
+            align-items: center;
+            grid-gap: 10px
+        }
+
+        input[type="checkbox"] {
+            all: unset;
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            background: hsl(0deg 0% 0% / 25%);
+            width: 15px;
+            height: 15px;
+            display: inline-block;
+        }
+        input[type="checkbox"]:checked{
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+        }
+
+        #topbar{
+            display: flex;
+            color: #cecece; 
+            background: hsla(0, 0%, 0%, 0.349);
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        #topbar > #options{display:flex; grid-gap: 20px;}
+        #topbar > #title{ display: flex; justify-content: center;}
+        #topbar > #languages{ display: flex; justify-content: flex-end; grid-gap: 20px;}
+
+        #basic-data{
+            width: 900px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            grid-gap: 60px;
+        }
+
+        #basic-data-inputs{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+        nav{
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-gap: 20px
+        }
+
+        #npc-image{
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img[class="character"]{
+            scale: 1.5;
+            background: hsla(0, 0%, 0%, 0.349);
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 0 10px 10px 0;
+        }
+
+        #outfitter{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 40px;
+        }
+
+        #outfitList, #mountList {
+            list-style: none;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #353535;
+            padding: 10px;
+            margin-top: 10px;
+            color: #cecece;
+            width: 160px;
+            font-size: 14px;
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+        }
+
+        #outfitList li, #mountList li {
+            padding: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #outfitList li:hover, #mountList li:hover {
+            background: hsla(0, 0%, 0%, 0.349);
+        }
+
+        #outfit-selector {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .oufitsMounts{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="topbar">
+            <div id="options">
+                <span>New</span>
+                <span>Open</span>
+                <span>Generate</span>
+            </div>
+            <div id="title">Canary NPC Creator</div>
+            <div id="languages">
+                <span>English</span>
+                <span>Brazilian</span>
+            </div>    
+        </div>
+
+        <nav>
+            <button class="tab-btn active" content-id="basic">Basic</button>
+            <button class="tab-btn active" content-id="buy-sell">Buy/Sell</button>
+            <button class="tab-btn active" content-id="talking">Talking</button>
+            <button class="tab-btn active" content-id="keywords">Keywords</button>
+        </nav>
+        
+    </header>
+
+    <div class="tab-contents">
+        <div id="basic basic-data" class="content">
+            <div id="outfitter">
+                <div class="oufitsMounts">
+                    <div class="outfits">
+                        <label for="">Outfits</label>
+                        <ul id="outfitList"></ul>
+                    </div>
+                    <div class="mounts">
+                        <label for="">Mounts</label>
+                        <ul id="mountList"></ul>
+                    </div>
+                </div>
+    
+                <div>
+                    <div id="npc-image">
+                        <img class="character" src="" alt="">
+                    </div>
+                    
+                    <div id="outfit-selector">
+                        <select id="genderSelector">
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                        </select>
+    
+                        <div class="addons">
+                            <div class="checkGroup">
+                                <input type="checkbox" name="addon1" value="1" id=""> Addon 1
+                            </div>
+                            <div class="checkGroup">
+                                <input type="checkbox" name="addon2" value="2" id=""> Addon 2
+                            </div>
+                            <div class="checkGroup">
+                                <input type="checkbox" name="mount" value="1" id=""> Mount
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Incluindo o componente looktype -->
+                <div id="looktype-container"></div>
+            </div>
+        
+            <div id="basic-data-inputs">
+                <div class="input-group">
+                    <label for="npc-name">NPC Name</label>
+                    <input type="text" id="npc-name" name="name" placeholder="Name">
+                </div>
+        
+                <div class="input-group">
+                    <label for="npc-max-health">Max Health</label>
+                    <input type="text" id="npc-max-health" name="max-health" value="100">
+                </div>
+        
+                <div class="input-group">
+                    <label for="npc-health-now">Health Now</label>
+                    <input type="text" id="npc-health-now" name="health-now" value="100">
+                </div>
+        
+                <div class="input-group">
+                    <label for="npc-walk-interval">Walk Interval</label>
+                    <input type="text" id="npc-walk-interval" name="walk-interval" value="1500">
+                </div>
+        
+                <div class="input-group">
+                    <label for="npc-walk-radius">Walk Radius</label>
+                    <input type="text" id="npc-walk-radius" name="walk-radius" value="2">
+                </div>
+        
+                <div class="input-group">
+                    <label for="npc-speed">Speed</label>
+                    <input type="text" id="npc-speed" name="walk-speed" value="100">
+                </div>
+        
+                <div class="input-group">
+                    <label for="npc-floor-change">Floor Change</label>
+                    <select id="genderSelector">
+                        <option value="false">No</option>
+                        <option value="true">Yes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="buy-sell" class="content">
+            buy and sell
+        </div>
+        <div id="talking" class="content">
+            talking
+        </div>
+        <div id="keywords" class="content">
+            keywords
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="looktype.js"></script>
+    <script>
+        // Carrega o componente looktype
+        fetch('looktype.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('looktype-container').innerHTML = html;
+            });
+            
+            const tabs = document.querySelectorAll('.tab-btn');
+
+            tabs.forEach(tab => tab.addEventListener('click', () => tabClicked(tab)));
+
+            const tabClicked = (tab) => {
+                tabs.forEach(tab => tab.classList.remove('active'));
+                tab.classList.add('active');
+
+                const contents = document.querySelectorAll('.content');
+                contents.forEach(content => content.classList.remove('show'));
+
+                const contentId = tab.getAttribute('content-id');
+                const content = document.getElementById(contentId);
+
+                content.classList.add('show');
+            }
+
+            const currentActiveTab = document.querySelector('.tab-btn.active');
+            tabClicked(currentActiveTab);
+    </script>
+</body>
+</html>
