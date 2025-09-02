@@ -228,6 +228,237 @@
             grid-template-columns: 1fr 1fr;
             grid-gap: 10px;
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .item-entry {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            
+            .generate-actions {
+                flex-direction: column;
+            }
+            
+            .option-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Additional improvements */
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background: hsla(0, 0%, 100%, 0.1);
+        }
+
+        .tab-btn.active {
+            background: hsla(0, 0%, 100%, 0.15);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .message-entry textarea,
+        .keyword-inputs textarea,
+        #config-output {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.4;
+        }
+
+        .item-entry input,
+        .message-entry textarea,
+        .keyword-inputs input,
+        .keyword-inputs textarea {
+            transition: border-color 0.3s ease;
+        }
+
+        .item-entry input:focus,
+        .message-entry textarea:focus,
+        .keyword-inputs input:focus,
+        .keyword-inputs textarea:focus {
+            border-color: #cecece;
+            outline: none;
+        }
+
+        /* Success/Error messages */
+        .message {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .message.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            color: #90EE90;
+        }
+
+        .message.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #FFB6C1;
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Tooltips */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Estilos para as novas seções */
+        .content {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content.show {
+            display: block;
+        }
+        
+        /* Estilos específicos para a seção Basic */
+        #basic {
+            display: block;
+        }
+        
+        #basic.show {
+            display: block;
+        }
+        
+        /* Garantir que o outfitter seja exibido */
+        #outfitter {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 40px;
+        }
+        
+        /* Garantir que os inputs básicos sejam exibidos */
+        #basic-data-inputs {
+            width: 900px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            grid-gap: 60px;
+        }
+        
+        /* Garantir que todos os elementos da seção Basic sejam visíveis */
+        #basic .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        #basic label {
+            color: #cecece;
+            margin-bottom: 5px;
+        }
+        
+        #basic input,
+        #basic select {
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 10px 20px;
+            background: #353535;
+            color: #cecece;
+        }
+        
+        #basic .oufitsMounts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+        
+        #basic #outfitList,
+        #basic #mountList {
+            list-style: none;
+            max-height: 200px;
+            overflow-y: auto;
+            background: #353535;
+            padding: 10px;
+            margin-top: 10px;
+            color: #cecece;
+            width: 160px;
+            font-size: 14px;
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+        }
+        
+        #basic #npc-image {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #basic .character {
+            scale: 1.5;
+            background: hsla(0, 0%, 0%, 0.349);
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 0 10px 10px 0;
+        }
+        
+        #basic #outfit-selector {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #basic .addons {
+            margin-top: 15px;
+        }
+        
+        #basic .checkGroup {
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            padding: 10px 10px;
+            background: hsl(0deg 0% 0% / 8%);
+            color: #cecece;
+            display: flex;
+            align-items: center;
+            grid-gap: 10px;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -247,15 +478,16 @@
 
         <nav>
             <button class="tab-btn active" content-id="basic">Basic</button>
-            <button class="tab-btn active" content-id="buy-sell">Buy/Sell</button>
-            <button class="tab-btn active" content-id="talking">Talking</button>
-            <button class="tab-btn active" content-id="keywords">Keywords</button>
+            <button class="tab-btn" content-id="buy-sell">Buy/Sell</button>
+            <button class="tab-btn" content-id="talking">Talking</button>
+            <button class="tab-btn" content-id="keywords">Keywords</button>
+            <button class="tab-btn" content-id="generate">Generate</button>
         </nav>
         
     </header>
 
     <div class="tab-contents">
-        <div id="basic basic-data" class="content">
+        <div id="basic" class="content show">
             <div id="outfitter">
                 <div class="oufitsMounts">
                     <div class="outfits">
@@ -330,7 +562,7 @@
         
                 <div class="input-group">
                     <label for="npc-floor-change">Floor Change</label>
-                    <select id="genderSelector">
+                    <select id="floor-change-selector">
                         <option value="false">No</option>
                         <option value="true">Yes</option>
                     </select>
@@ -339,45 +571,571 @@
         </div>
 
         <div id="buy-sell" class="content">
-            buy and sell
+            <div class="buy-sell-container">
+                <div class="buy-sell-header">
+                    <h2>Buy/Sell Configuration</h2>
+                    <p>Configure what items the NPC can buy and sell</p>
+                </div>
+                
+                <div class="buy-sell-tabs">
+                    <button class="buy-sell-tab active" data-tab="buy">Buy Items</button>
+                    <button class="buy-sell-tab" data-tab="sell">Sell Items</button>
+                </div>
+                
+                <div class="buy-sell-content">
+                    <div id="buy-tab" class="tab-panel active">
+                        <div class="item-search">
+                            <input type="text" id="buy-item-search" placeholder="Search items to buy...">
+                            <button id="add-buy-item">Add Item</button>
+                        </div>
+                        <div class="item-list" id="buy-items-list">
+                            <div class="item-entry">
+                                <input type="text" placeholder="Item ID" class="item-id">
+                                <input type="text" placeholder="Item Name" class="item-name">
+                                <input type="number" placeholder="Price" class="item-price" min="0">
+                                <button class="remove-item">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="sell-tab" class="tab-panel">
+                        <div class="item-search">
+                            <input type="text" id="sell-item-search" placeholder="Search items to sell...">
+                            <button id="add-sell-item">Add Item</button>
+                        </div>
+                        <div class="item-list" id="sell-items-list">
+                            <div class="item-entry">
+                                <input type="text" placeholder="Item ID" class="item-id">
+                                <input type="text" placeholder="Item Name" class="item-name">
+                                <input type="number" placeholder="Price" class="item-price" min="0">
+                                <button class="remove-item">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div id="talking" class="content">
-            talking
+            <div class="talking-container">
+                <div class="talking-header">
+                    <h2>NPC Dialogue System</h2>
+                    <p>Configure the NPC's conversation responses</p>
+                </div>
+                
+                <div class="dialogue-sections">
+                    <div class="dialogue-section">
+                        <h3>Greeting Messages</h3>
+                        <div class="message-list" id="greeting-messages">
+                            <div class="message-entry">
+                                <textarea placeholder="Enter greeting message..." class="message-text"></textarea>
+                                <button class="remove-message">Remove</button>
+                            </div>
+                        </div>
+                        <button class="add-message" data-type="greeting">Add Greeting</button>
+                    </div>
+                    
+                    <div class="dialogue-section">
+                        <h3>Farewell Messages</h3>
+                        <div class="message-list" id="farewell-messages">
+                            <div class="message-entry">
+                                <textarea placeholder="Enter farewell message..." class="message-text"></textarea>
+                                <button class="remove-message">Remove</button>
+                            </div>
+                        </div>
+                        <button class="add-message" data-type="farewell">Add Farewell</button>
+                    </div>
+                    
+                    <div class="dialogue-section">
+                        <h3>Default Responses</h3>
+                        <div class="message-list" id="default-messages">
+                            <div class="message-entry">
+                                <textarea placeholder="Enter default response..." class="message-text"></textarea>
+                                <button class="remove-message">Remove</button>
+                            </div>
+                        </div>
+                        <button class="add-message" data-type="default">Add Default Response</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div id="keywords" class="content">
-            keywords
+            <div class="keywords-container">
+                <div class="keywords-header">
+                    <h2>Keyword Responses</h2>
+                    <p>Configure specific responses for keywords or phrases</p>
+                </div>
+                
+                <div class="keyword-actions">
+                    <button id="add-keyword-btn">Add New Keyword</button>
+                </div>
+                
+                <div class="keywords-list" id="keywords-list">
+                    <div class="keyword-entry">
+                        <div class="keyword-inputs">
+                            <input type="text" placeholder="Keyword or phrase" class="keyword-text">
+                            <textarea placeholder="Response to this keyword..." class="keyword-response"></textarea>
+                        </div>
+                        <div class="keyword-actions">
+                            <button class="remove-keyword">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="generate" class="content">
+            <div class="generate-container">
+                <div class="generate-header">
+                    <h2>Generate NPC Configuration</h2>
+                    <p>Generate the complete NPC configuration file</p>
+                </div>
+                
+                <div class="generate-options">
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="include-basic" checked> Include Basic Settings
+                        </label>
+                        <label>
+                            <input type="checkbox" id="include-buy-sell" checked> Include Buy/Sell Configuration
+                        </label>
+                        <label>
+                            <input type="checkbox" id="include-talking" checked> Include Dialogue System
+                        </label>
+                        <label>
+                            <input type="checkbox" id="include-keywords" checked> Include Keyword Responses
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="generate-actions">
+                    <button id="generate-config">Generate Configuration</button>
+                    <button id="download-config">Download as File</button>
+                    <button id="copy-config">Copy to Clipboard</button>
+                </div>
+                
+                <div class="generated-output">
+                    <h3>Generated Configuration:</h3>
+                    <textarea id="config-output" readonly placeholder="Generated configuration will appear here..."></textarea>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="scripts.js"></script>
     <script src="looktype.js"></script>
+    <script src="npc-manager.js"></script>
     <script>
-        // Carrega o componente looktype
-        fetch('looktype.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('looktype-container').innerHTML = html;
-            });
+        // Aguarda todos os scripts carregarem
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carrega o componente looktype
+            fetch('looktype.html')
+                .then(response => response.text())
+                .then(html => {
+                    const container = document.getElementById('looktype-container');
+                    if (container) {
+                        container.innerHTML = html;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar looktype:', error);
+                });
             
+            // Sistema de navegação por abas
             const tabs = document.querySelectorAll('.tab-btn');
-
             tabs.forEach(tab => tab.addEventListener('click', () => tabClicked(tab)));
 
             const tabClicked = (tab) => {
-                tabs.forEach(tab => tab.classList.remove('active'));
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
 
+                // Hide all content sections
                 const contents = document.querySelectorAll('.content');
                 contents.forEach(content => content.classList.remove('show'));
 
+                // Show the target content
                 const contentId = tab.getAttribute('content-id');
                 const content = document.getElementById(contentId);
 
-                content.classList.add('show');
+                if (content) {
+                    content.classList.add('show');
+                }
             }
 
-            const currentActiveTab = document.querySelector('.tab-btn.active');
-            tabClicked(currentActiveTab);
+            // Show basic tab by default
+            const basicTab = document.querySelector('.tab-btn[content-id="basic"]');
+            if (basicTab) {
+                tabClicked(basicTab);
+            }
+            
+            // Garantir que a seção basic seja exibida
+            const basicContent = document.getElementById('basic');
+            if (basicContent) {
+                basicContent.classList.add('show');
+            }
+        });
     </script>
+
+    <style>
+        /* Estilos para as novas seções */
+        .content {
+            display: none;
+            padding: 20px;
+        }
+        
+        .content.show {
+            display: block;
+        }
+        
+        /* Buy/Sell Styles */
+        .buy-sell-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .buy-sell-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .buy-sell-header h2 {
+            color: #cecece;
+            margin-bottom: 10px;
+        }
+        
+        .buy-sell-header p {
+            color: #929292;
+        }
+        
+        .buy-sell-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .buy-sell-tab {
+            padding: 15px 30px;
+            font-size: 16px;
+        }
+        
+        .tab-panel {
+            display: none;
+        }
+        
+        .tab-panel.active {
+            display: block;
+        }
+        
+        .item-search {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .item-search input {
+            flex: 1;
+        }
+        
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .item-entry {
+            display: grid;
+            grid-template-columns: 100px 1fr 150px 100px;
+            gap: 10px;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid #636363;
+        }
+        
+        /* Talking Styles */
+        .talking-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .talking-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .talking-header h2 {
+            color: #cecece;
+            margin-bottom: 10px;
+        }
+        
+        .talking-header p {
+            color: #929292;
+        }
+        
+        .dialogue-sections {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .dialogue-section {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border: 1px solid #636363;
+        }
+        
+        .dialogue-section h3 {
+            color: #cecece;
+            margin-bottom: 15px;
+        }
+        
+        .message-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .message-entry {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        
+        .message-entry textarea {
+            flex: 1;
+            min-height: 60px;
+            resize: vertical;
+        }
+        
+        /* Keywords Styles */
+        .keywords-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .keywords-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .keywords-header h2 {
+            color: #cecece;
+            margin-bottom: 10px;
+        }
+        
+        .keywords-header p {
+            color: #929292;
+        }
+        
+        .keyword-actions {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .keywords-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .keyword-entry {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border: 1px solid #636363;
+        }
+        
+        .keyword-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .keyword-inputs textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        /* Generate Styles */
+        .generate-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .generate-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .generate-header h2 {
+            color: #cecece;
+            margin-bottom: 10px;
+        }
+        
+        .generate-header p {
+            color: #929292;
+        }
+        
+        .generate-options {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border: 1px solid #636363;
+            margin-bottom: 30px;
+        }
+        
+        .option-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .option-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cecece;
+            cursor: pointer;
+        }
+        
+        .option-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .generate-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .generated-output {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border: 1px solid #636363;
+        }
+        
+        .generated-output h3 {
+            color: #cecece;
+            margin-bottom: 15px;
+        }
+        
+        #config-output {
+            width: 100%;
+            min-height: 300px;
+            resize: vertical;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .item-entry {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            
+            .generate-actions {
+                flex-direction: column;
+            }
+            
+            .option-group {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Additional improvements */
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            background: hsla(0, 0%, 100%, 0.1);
+        }
+
+        .tab-btn.active {
+            background: hsla(0, 0%, 100%, 0.15);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .message-entry textarea,
+        .keyword-inputs textarea,
+        #config-output {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.4;
+        }
+
+        .item-entry input,
+        .message-entry textarea,
+        .keyword-inputs input,
+        .keyword-inputs textarea {
+            transition: border-color 0.3s ease;
+        }
+
+        .item-entry input:focus,
+        .message-entry textarea:focus,
+        .keyword-inputs input:focus,
+        .keyword-inputs textarea:focus {
+            border-color: #cecece;
+            outline: none;
+        }
+
+        /* Success/Error messages */
+        .message {
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .message.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            color: #90EE90;
+        }
+
+        .message.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #FFB6C1;
+        }
+
+        /* Loading states */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Tooltips */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </body>
 </html>

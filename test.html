@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Canary NPC Creator</title>
+    <style>
+        body {
+            background: #2c2c2c;
+            color: #cecece;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .test-section {
+            background: #353535;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #636363;
+        }
+        
+        .test-section h2 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        input, select {
+            background: #2c2c2c;
+            color: #cecece;
+            border: 1px solid #636363;
+            padding: 10px;
+            margin: 5px;
+        }
+        
+        button {
+            background: #4a4a4a;
+            color: #cecece;
+            border: 1px solid #636363;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #5a5a5a;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste - Canary NPC Creator</h1>
+    
+    <div class="test-section">
+        <h2>Teste de Inputs Básicos</h2>
+        <div>
+            <label>Nome do NPC:</label>
+            <input type="text" id="test-name" placeholder="Nome do NPC">
+        </div>
+        <div>
+            <label>Vida Máxima:</label>
+            <input type="number" id="test-health" value="100">
+        </div>
+        <div>
+            <label>Velocidade:</label>
+            <input type="number" id="test-speed" value="100">
+        </div>
+        <div>
+            <label>Raio de Caminhada:</label>
+            <input type="number" id="test-radius" value="2">
+        </div>
+        <div>
+            <label>Mudança de Andar:</label>
+            <select id="test-floor">
+                <option value="false">Não</option>
+                <option value="true">Sim</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Teste de Navegação</h2>
+        <button onclick="testTab('basic')">Basic</button>
+        <button onclick="testTab('buy-sell')">Buy/Sell</button>
+        <button onclick="testTab('talking')">Talking</button>
+        <button onclick="testTab('keywords')">Keywords</button>
+        <button onclick="testTab('generate')">Generate</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Resultado do Teste</h2>
+        <div id="test-result">
+            Clique nos botões acima para testar a navegação.
+        </div>
+    </div>
+    
+    <script>
+        function testTab(tabName) {
+            document.getElementById('test-result').innerHTML = `
+                <p><strong>Tab clicada:</strong> ${tabName}</p>
+                <p><strong>Nome:</strong> ${document.getElementById('test-name').value || 'Não preenchido'}</p>
+                <p><strong>Vida:</strong> ${document.getElementById('test-health').value}</p>
+                <p><strong>Velocidade:</strong> ${document.getElementById('test-speed').value}</p>
+                <p><strong>Raio:</strong> ${document.getElementById('test-radius').value}</p>
+                <p><strong>Mudança de Andar:</strong> ${document.getElementById('test-floor').value}</p>
+            `;
+        }
+        
+        // Teste inicial
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('test-result').innerHTML = 'Página carregada com sucesso!';
+        });
+    </script>
+</body>
+</html> 
