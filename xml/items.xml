@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<items>
+	<!-- Liquids -->
+    <!-- Fluid type 0 is same as water (id="1") -->
+    <item id="1" name="water"/>
+    <item id="2" name="wine"/>
+    <item id="3" name="beer"/>
+    <item id="4" name="mud"/>
+    <item id="5" name="blood"/>
+    <item id="6" name="slime"/>
+    <item id="7" name="oil"/>
+    <item id="8" name="urine"/>
+    <item id="9" name="milk"/>
+    <item id="10" name="manafluid"/>
+    <item id="11" name="lifefluid"/>
+    <item id="12" name="lemonade"/>
+    <item id="13" name="rum"/>
+    <item id="14" name="fruit juice"/>
+    <item id="15" name="coconut milk"/>
+    <item id="16" name="mead"/>
+    <item id="17" name="tea"/>
+    <item id="18" name="ink"/>
+    <item id="19" name="candyfluid"/>
+    <item id="20" name="chocolate"/>
+    <!-- 13.40 last fluid is 20, 21+ is a loop from 0 to 20 over and over again -->
+
+	<item id="100" name="void"/>
+	<item id="101" name="earth"/>
+	<item id="102" article="a" name="white flower">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="103" name="dirt"/>
+	<item id="104" name="sand">
+		<attribute key="primarytype" value="natural tiles"/>
+	</item>
+	<item id="105" article="a" name="poison field">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="248"/>
+		<attribute key="field" value="poison">
+			<attribute key="ticks" value="5000"/>
+			<attribute key="start" value="5"/>
+			<attribute key="damage" value="100"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+	<item id="106" name="grass"/>
+	<item id="107" article="a" name="special flask">
+		<attribute key="description" value="It contains the smell of a freshly slain slime."/>
+		<attribute key="weight" value="180"/>
+	</item>
+	<item fromid="108" toid="109" name="flowers"/>
+	<item id="110" article="a" name="special flask">
+		<attribute key="description" value="Bozo gave it to you to collect certain secret ingredients."/>
+		<attribute key="weight" value="180"/>
+	</item>
+	<item id="111" article="a" name="dead human">
+		<attribute key="containerSize" value="10"/>
+		<attribute key="decayTo" value="4240"/>
+		<attribute key="duration" value="10"/>
+		<attribute key="fluidsource" value="blood"/>
+	</item>
+	<item id="112" article="a" name="magical watch">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="50"/>
+	</item>
+	<item id="113" article="the" name="dwarven emperor's beard">
+		<attribute key="weight" value="50"/>
+	</item>
+	<item fromid="114" toid="115" article="a" name="bed">
+		<attribute key="primarytype" value="constructions"/>
+		<attribute key="description" value="The dwarven emperor is sleeping there."/>
+	</item>
+	<item id="116" article="a" name="crate">
+		<attribute key="primarytype" value="containers"/>
+		<attribute key="description" value="It contains the daily supply for Xodet's shop."/>
+		<attribute key="containersize" value="15"/>
+		<attribute key="weight" value="8000"/>
+	</item>
+	<item id="117" article="a" name="crate">
+		<attribute key="primarytype" value="containers"/>
+		<attribute key="description" value="It contains a lot of wine flasks."/>
+		<attribute key="weight" value="8000"/>
+	</item>
+	<item id="118" article="a" name="crate">
+		<attribute key="primarytype" value="containers"/>
+		<attribute key="description" value="You swapped it with Bozo's crate of wine flasks"/>
+		<attribute key="containersize" value="15"/>
+		<attribute key="weight" value="8000"/>
+	</item>
+	<item id="119" article="a" name="box">
+		<attribute key="primarytype" value="containers"/>
+		<attribute key="description" value="It is filled with delicious cream pies"/>
+		<attribute key="containersize" value="10"/>
+		<attribute key="weight" value="3500"/>
+	</item>
+	<item id="120" name="some special leaves">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="description" value="They have an aromatic smell."/>
+		<attribute key="weight" value="80"/>
+	</item>
+	<item id="121" article="a" name="whoopee cushion">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="description" value="Bozo gave it to you."/>
+		<attribute key="weight" value="1500"/>
+	</item>
+	<item id="122" article="a" name="cat basket">
+		<attribute key="primarytype" value="quest objects"/>
+	</item>
+	<item id="123" article="a" name="toy mouse">
+		<attribute key="primarytype" value="dolls and bears"/>
+		<attribute key="weight" value="1250"/>
+	</item>
+	<item id="124" article="an" name="easily inflammable sulphur">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="50"/>
+	</item>
+	<item id="125" article="a" name="special flask">
+		<attribute key="weight" value="180"/>
+	</item>
+	<item id="126" article="a" name="special flask">
+		<attribute key="description" value="It contains the ink of a freshly slain quara."/>
+		<attribute key="weight" value="180"/>
+	</item>
+	<item id="127" article="a" name="magical inkwell">
+		<attribute key="primarytype" value="tools"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="128" article="a" name="signed contract">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="129" article="a" name="contract">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="weight" value="200"/>
+		<attribute key="description" value="It is not signed yet."/>
+	</item>
+	<item id="130" article="an" name="exploding cookie">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="131" article="an" name="ectoplasm container">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="description" value="It is filled with a desecrated bone."/>
+		<attribute key="weight" value="600"/>
+	</item>
+	<item id="132" article="a" name="scrying crystal ball"/>
+	<item id="133" article="a" name="special flask">
+		<attribute key="description" value="It contains holy water from the white raven monastery."/>
+		<attribute key="weight" value="180"/>
+	</item>
+	<item id="134" article="a" name="grave"/>
+	<item id="135" article="a" name="special flask">
+		<attribute key="description" value="It contains highly intensified poison against vermin."/>
+		<attribute key="weight" value="180"/>
+	</item>
+	<item id="136" article="a" name="beer bottle">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="250"/>
+		<attribute key="description" value="It is filled with the legendary dwarvish brown ale."/>
+	</item>
+	<item id="137" article="a" name="water cask">
+		<attribute key="primarytype" value="casks"/>
+		<attribute key="fluidsource" value="water"/>
+	</item>
+	<item id="138" article="an" name="empty beer bottle">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="250"/>
+		<attribute key="description" value="It is the bottle Boozer gave you for the brown ale."/>
+	</item>
+	<item id="139" article="a" name="mining helmet">
+		<attribute key="primarytype" value="helmets"/>
+		<attribute key="armor" value="1"/>
+		<attribute key="weight" value="700"/>
+		<attribute key="description" value="This is Budriks old mining helmet."/>
+	</item>
+	<item id="140" article="a" name="parcel">
+		<attribute key="primarytype" value="containers"/>
+		<attribute key="description" value="It is the parcel for the watchtower on the Femor Hills"/>
+		<attribute key="containersize" value="10"/>
+		<attribute key="weight" value="1800"/>
+	</item>
+	<item id="141" article="a" name="cigar">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="120"/>
+	</item>
+	<item id="142" article="a" name="bale of white cloth">
+		<attribute key="weight" value="1000"/>
+	</item>
+	<item id="143" article="a" name="bale of yellowed cloth">
+		<attribute key="weight" value="1000"/>
+	</item>
+	<item id="144" article="a" name="mummy disguise">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="900"/>
+	</item>
+	<item id="145" article="a" name="heavy package">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="60000"/>
+	</item>
+	<item fromid="146" toid="149" article="a" name="fire shrine">
+		<attribute key="primarytype" value="shrines and altars"/>
+	</item>
+	<item fromid="150" toid="153" article="an" name="ice shrine">
+		<attribute key="primarytype" value="shrines and altars"/>
+	</item>
+	<item fromid="154" toid="157" article="an" name="energy shrine">
+		<attribute key="primarytype" value="shrines and altars"/>
+	</item>
+	<item fromid="158" toid="161" article="an" name="earth shrine">
+		<attribute key="primarytype" value="shrines and altars"/>
+	</item>
+	<item fromid="162" toid="165" article="a" name="wooden coffin">
+		<attribute key="primarytype" value="coffins"/>
+	</item>
+	<item id="166" article="a" name="wooden coffin">
+		<attribute key="primarytype" value="coffins"/>
+		<attribute key="description" value="You can see stairs leading down."/>
+		<attribute key="floorchange" value="down"/>
+	</item>
+	<item id="167" article="a" name="wooden coffin">
+		<attribute key="primarytype" value="coffins"/>
+		<attribute key="description" value="You can see stairs leading down."/>
+		<attribute key="floorchange" value="down"/>
+	</item>
+	<item id="168" name="RESERVED SPRITE"/>
+	<item id="169" article="a" name="scarab cheese">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="description" value="It smells horrible and should not be in the sun for too long."/>
+		<attribute key="weight" value="400"/>
+		<attribute key="decayTo" value="3120"/>
+		<attribute key="duration" value="1800"/>
+	</item>
+	<item id="170" article="a" name="fake dwarven beard">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="50"/>
+	</item>
+	<item id="171" article="a" name="coal basin"/>
+	<item id="172" article="a" name="blank poetry parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="Use your inkwell on it to try writing a poem."/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="173" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red...'"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="1023"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="174" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red, and so is my blood.' Damn, that sounds stupid. You have to start over"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="1023"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="175" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red, violets are blue...' Sounds good, but what now."/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="1023"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="176" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red, violets are blue, I love blood and carnage...' No, no, this is a war poem"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="1023"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="177" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red, violets are blue, sugar is sweet...' Very poetic, now for the final rhyme."/>
+		<attribute key="maxTextLen" value="1023"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="178" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red, violets are blue, sugar is sweet, there's mud on my shoe.' You blew it"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="1023"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="179" article="a" name="parchment">
+		<attribute key="primarytype" value="documents and papers"/>
+		<attribute key="description" value="It says 'Roses are red, violets are blue, sugar is sweet and so are you.' Excellent"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="1023"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="180" article="the" name="remains of a spider egg"/>
+	<item id="181" article="the" name="spider egg">
+		<attribute key="primarytype" value="natural products"/>
+	</item>
+	<item fromid="182" toid="187" article="a" name="spider web">
+		<attribute key="primarytype" value="natural products"/>
+	</item>
+	<item id="188" article="the" name="remains of a spider web">
+		<attribute key="decayTo" value="182"/>
+		<attribute key="duration" value="60"/>
+	</item>
+	<item id="189" article="the" name="remains of a spider web">
+		<attribute key="decayTo" value="183"/>
+		<attribute key="duration" value="60"/>
+	</item>
+	<item fromid="190" toid="192" article="a" name="spider web">
+		<attribute key="primarytype" value="natural products"/>
+	</item>
+	<item id="193" name="something crawling">
+		<attribute key="primarytype" value="animals"/>
+	</item>
+	<item fromid="2104" toid="2107" article="a" name="huntress statue">
+		<attribute key="primarytype" value="statues"/>
+	</item>
+	<item fromid="2108" toid="2109" article="a" name="street lamp"/>
+	<item fromid="2110" toid="2113" article="a" name="coal basin"/>
+	<item id="2114" article="an" name="empty coal basin">
+		<attribute key="primarytype" value="utilities"/>
+	</item>
+	<item id="2115" article="a" name="stone coal basin">
+		<attribute key="primarytype" value="illumination"/>
+	</item>
+	<item id="2116" article="a" name="bamboo lamp">
+		<attribute key="primarytype" value="utilities"/>
+	</item>
+	<item id="2117" article="a" name="bamboo lamp">
+		<attribute key="primarytype" value="utilities"/>
+	</item>
+	<item id="2118" article="a" name="fire field">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="field" value="fire">
+			<attribute key="ticks" value="10000"/>
+			<attribute key="count" value="7"/>
+			<attribute key="damage" value="20"/>
+		</attribute>
+		<attribute key="duration" value="200"/>
+		<attribute key="decayTo" value="2119"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+
+	<!-- Common Tibia Items for testing -->
+	<item id="1650" article="a" name="short sword">
+		<attribute key="primarytype" value="weapons"/>
+		<attribute key="weight" value="2200"/>
+	</item>
+	<item id="1651" article="a" name="sword">
+		<attribute key="primarytype" value="weapons"/>
+		<attribute key="weight" value="3800"/>
+	</item>
+	<item id="1652" article="a" name="dagger">
+		<attribute key="primarytype" value="weapons"/>
+		<attribute key="weight" value="1000"/>
+	</item>
+	<item id="1653" article="a" name="axe">
+		<attribute key="primarytype" value="weapons"/>
+		<attribute key="weight" value="3800"/>
+	</item>
+	<item id="1654" article="a" name="club">
+		<attribute key="primarytype" value="weapons"/>
+		<attribute key="weight" value="2800"/>
+	</item>
+	<item id="2120" article="a" name="rope">
+		<attribute key="primarytype" value="tools"/>
+		<attribute key="weight" value="450"/>
+	</item>
+	<item id="2121" article="a" name="shovel">
+		<attribute key="primarytype" value="tools"/>
+		<attribute key="weight" value="2000"/>
+	</item>
+	<item id="2160" article="a" name="gold coin">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="weight" value="1"/>
+	</item>
+	<item id="2161" article="a" name="platinum coin">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="weight" value="1"/>
+	</item>
+	<item id="2162" article="a" name="crystal coin">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="weight" value="1"/>
+	</item>
+	<item id="2666" article="a" name="meat">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="weight" value="300"/>
+	</item>
+	<item id="2667" article="a" name="fish">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="weight" value="200"/>
+	</item>
+	<item id="2689" article="a" name="bread">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="weight" value="80"/>
+	</item>
+	<item id="2692" article="a" name="cake">
+		<attribute key="primarytype" value="food"/>
+		<attribute key="weight" value="120"/>
+	</item>
+	
+</items>

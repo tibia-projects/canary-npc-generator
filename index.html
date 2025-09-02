@@ -142,7 +142,7 @@
         #topbar > #title{ display: flex; justify-content: center;}
         #topbar > #languages{ display: flex; justify-content: flex-end; grid-gap: 20px;}
 
-        #basic-data{
+        .basic-data{
             width: 900px;
             display: flex;
             flex-direction: column;
@@ -152,7 +152,7 @@
             grid-gap: 60px;
         }
 
-        #basic-data-inputs{
+        .basic-data-inputs{
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -229,235 +229,337 @@
             grid-gap: 10px;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .item-entry {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-            
-            .generate-actions {
-                flex-direction: column;
-            }
-            
-            .option-group {
-                grid-template-columns: 1fr;
-            }
+        /* Estilos para a aba Buy/Sell */
+        #buy-sell-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
         }
 
-        /* Additional improvements */
-        .tab-btn {
-            transition: all 0.3s ease;
+        /* Sub-navegação */
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
-        .tab-btn:hover {
-            background: hsla(0, 0%, 100%, 0.1);
+        .sub-tab-btn {
+            border-top: 1px solid #636363;
+            border-left: 1px solid #636363;
+            border-right: 1px solid hsl(0deg 0% 0% / 25%);
+            border-bottom: 1px solid hsl(0deg 0% 0% / 25%);
+            padding: 12px 25px;
+            background: hsl(0deg 0% 100% / 2%);
+            color: #cecece;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .tab-btn.active {
-            background: hsla(0, 0%, 100%, 0.15);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        .sub-tab-btn:hover {
+            background: hsla(0, 0%, 0%, 0.2);
         }
 
-        .message-entry textarea,
-        .keyword-inputs textarea,
-        #config-output {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.4;
+        .sub-tab-btn.active {
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            background: hsla(0, 0%, 0%, 0.349);
+            color: #fff;
         }
 
-        .item-entry input,
-        .message-entry textarea,
-        .keyword-inputs input,
-        .keyword-inputs textarea {
-            transition: border-color 0.3s ease;
+        /* Sub-conteúdo */
+        .sub-content {
+            display: none;
         }
 
-        .item-entry input:focus,
-        .message-entry textarea:focus,
-        .keyword-inputs input:focus,
-        .keyword-inputs textarea:focus {
-            border-color: #cecece;
-            outline: none;
+        .sub-content.active {
+            display: block;
         }
 
-        /* Success/Error messages */
-        .message {
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 4px;
+        #sell-section, #buy-section {
+            padding: 20px;
+        }
+
+        .suggestions-dropdown,
+        #sell-item-suggestions,
+        #buy-item-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #353535;
+            border: 1px solid #636363;
+            border-top: none;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+            color: #cecece;
+            border-bottom: 1px solid #555;
+        }
+
+        .suggestion-item:hover {
+            background: hsla(0, 0%, 0%, 0.349);
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        #sell-items-table,
+        #buy-items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #353535;
+            color: #cecece;
+        }
+
+        #sell-items-table th,
+        #sell-items-table td,
+        #buy-items-table th,
+        #buy-items-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
+
+        #sell-items-table th,
+        #buy-items-table th {
+            background: hsla(0, 0%, 0%, 0.349);
             font-weight: 500;
         }
 
-        .message.success {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            color: #90EE90;
+        #sell-items-table tr:hover,
+        #buy-items-table tr:hover {
+            background: hsla(0, 0%, 0%, 0.2);
         }
 
-        .message.error {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            color: #FFB6C1;
+        .action-btn {
+            background: none;
+            border: 1px solid #636363;
+            color: #cecece;
+            padding: 5px 8px;
+            margin: 0 2px;
+            cursor: pointer;
+            font-size: 12px;
         }
 
-        /* Loading states */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
+        .action-btn:hover {
+            background: hsla(0, 0%, 0%, 0.349);
         }
 
-        /* Tooltips */
-        .tooltip {
-            position: relative;
-            display: inline-block;
+        .action-btn.delete {
+            color: #ff6b6b;
         }
 
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
+        .action-btn.edit {
+            color: #4ecdc4;
         }
 
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Estilos para as novas seções */
         .content {
             display: none;
-            padding: 20px;
         }
-        
+
         .content.show {
             display: block;
         }
-        
-        /* Estilos específicos para a seção Basic */
-        #basic {
-            display: block;
+
+        /* Estilos para a aba Keywords */
+        #keywords-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
         }
-        
-        #basic.show {
-            display: block;
-        }
-        
-        /* Garantir que o outfitter seja exibido */
-        #outfitter {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            margin-top: 40px;
-        }
-        
-        /* Garantir que os inputs básicos sejam exibidos */
-        #basic-data-inputs {
-            width: 900px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            grid-gap: 60px;
-        }
-        
-        /* Garantir que todos os elementos da seção Basic sejam visíveis */
-        #basic .input-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-        
-        #basic label {
-            color: #cecece;
-            margin-bottom: 5px;
-        }
-        
-        #basic input,
-        #basic select {
-            border-top: 1px solid hsl(0deg 0% 0% / 25%);
-            border-left: 1px solid hsl(0deg 0% 0% / 25%);
-            border-right: 1px solid #636363;
-            border-bottom: 1px solid #636363;
-            padding: 10px 20px;
-            background: #353535;
-            color: #cecece;
-        }
-        
-        #basic .oufitsMounts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 10px;
-        }
-        
-        #basic #outfitList,
-        #basic #mountList {
-            list-style: none;
-            max-height: 200px;
-            overflow-y: auto;
-            background: #353535;
-            padding: 10px;
-            margin-top: 10px;
-            color: #cecece;
-            width: 160px;
-            font-size: 14px;
-            border-top: 1px solid hsl(0deg 0% 0% / 25%);
-            border-left: 1px solid hsl(0deg 0% 0% / 25%);
-            border-right: 1px solid #636363;
-            border-bottom: 1px solid #636363;
-        }
-        
-        #basic #npc-image {
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        #basic .character {
-            scale: 1.5;
-            background: hsla(0, 0%, 0%, 0.349);
-            border-top: 1px solid hsl(0deg 0% 0% / 25%);
-            border-left: 1px solid hsl(0deg 0% 0% / 25%);
-            border-right: 1px solid #636363;
-            border-bottom: 1px solid #636363;
-            padding: 0 10px 10px 0;
-        }
-        
-        #basic #outfit-selector {
+
+        #keywords-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 20px;
+            background: #353535;
+            color: #cecece;
+        }
+
+        #keywords-table th,
+        #keywords-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #555;
+        }
+
+        #keywords-table th {
+            background: hsla(0, 0%, 0%, 0.349);
+            font-weight: 500;
+        }
+
+        #keywords-table tr:hover {
+            background: hsla(0, 0%, 0%, 0.2);
+        }
+
+        #keywords-table td:nth-child(2) {
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+
+        /* Estilos para a aba Talking */
+        #talking-section {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        /* Estilos para o modal de geração */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #353535;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #636363;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 85vh;
+            border-radius: 5px;
+            color: #cecece;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #636363;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .modal-body {
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        #generated-code {
+            width: 100%;
+            height: 400px;
+            background: #2c2c2c;
+            color: #cecece;
+            border: 1px solid #636363;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            resize: vertical;
+            border-radius: 3px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #636363;
+        }
+
+        .download-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .download-btn:hover {
+            background: #45a049;
+        }
+
+        .talking-inputs {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
         }
-        
-        #basic .addons {
-            margin-top: 15px;
+
+        .talking-inputs .input-group {
+            margin-bottom: 0;
         }
-        
-        #basic .checkGroup {
-            border-top: 1px solid hsl(0deg 0% 0% / 25%);
-            border-left: 1px solid hsl(0deg 0% 0% / 25%);
-            border-right: 1px solid #636363;
-            border-bottom: 1px solid #636363;
-            padding: 10px 10px;
-            background: hsl(0deg 0% 0% / 8%);
+
+        .talking-inputs input[type="text"] {
+            width: 100%;
+            font-size: 14px;
+            padding: 12px 15px;
+        }
+
+        .message-info {
+            background: hsla(0, 0%, 0%, 0.2);
+            border: 1px solid #636363;
+            border-radius: 5px;
+            padding: 20px;
             color: #cecece;
-            display: flex;
-            align-items: center;
-            grid-gap: 10px;
-            margin-bottom: 5px;
+        }
+
+        .message-info h3 {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .message-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .message-info li {
+            padding: 5px 0;
+            border-bottom: 1px solid #555;
+            font-size: 14px;
+        }
+
+        .message-info li:last-child {
+            border-bottom: none;
+        }
+
+        .message-info strong {
+            color: #4ecdc4;
+            font-family: monospace;
         }
     </style>
 </head>
@@ -467,7 +569,7 @@
             <div id="options">
                 <span>New</span>
                 <span>Open</span>
-                <span>Generate</span>
+                <span onclick="generateNPC()" style="cursor: pointer;">Generate</span>
             </div>
             <div id="title">Canary NPC Creator</div>
             <div id="languages">
@@ -481,13 +583,12 @@
             <button class="tab-btn" content-id="buy-sell">Buy/Sell</button>
             <button class="tab-btn" content-id="talking">Talking</button>
             <button class="tab-btn" content-id="keywords">Keywords</button>
-            <button class="tab-btn" content-id="generate">Generate</button>
         </nav>
         
     </header>
 
     <div class="tab-contents">
-        <div id="basic" class="content show">
+        <div id="basic" class="content basic-data">
             <div id="outfitter">
                 <div class="oufitsMounts">
                     <div class="outfits">
@@ -529,7 +630,7 @@
                 <div id="looktype-container"></div>
             </div>
         
-            <div id="basic-data-inputs">
+            <div class="basic-data-inputs">
                 <div class="input-group">
                     <label for="npc-name">NPC Name</label>
                     <input type="text" id="npc-name" name="name" placeholder="Name">
@@ -562,7 +663,7 @@
         
                 <div class="input-group">
                     <label for="npc-floor-change">Floor Change</label>
-                    <select id="floor-change-selector">
+                    <select id="floorChangeSelector">
                         <option value="false">No</option>
                         <option value="true">Yes</option>
                     </select>
@@ -571,571 +672,225 @@
         </div>
 
         <div id="buy-sell" class="content">
-            <div class="buy-sell-container">
-                <div class="buy-sell-header">
-                    <h2>Buy/Sell Configuration</h2>
-                    <p>Configure what items the NPC can buy and sell</p>
+            <div id="buy-sell-section">
+                <!-- Sub-navegação para Buy/Sell -->
+                <div class="sub-nav">
+                    <button class="sub-tab-btn active" onclick="switchBuySellTab('sell')">Sell</button>
+                    <button class="sub-tab-btn" onclick="switchBuySellTab('buy')">Buy</button>
                 </div>
                 
-                <div class="buy-sell-tabs">
-                    <button class="buy-sell-tab active" data-tab="buy">Buy Items</button>
-                    <button class="buy-sell-tab" data-tab="sell">Sell Items</button>
-                </div>
-                
-                <div class="buy-sell-content">
-                    <div id="buy-tab" class="tab-panel active">
-                        <div class="item-search">
-                            <input type="text" id="buy-item-search" placeholder="Search items to buy...">
-                            <button id="add-buy-item">Add Item</button>
+                <!-- Aba Sell -->
+                <div id="sell-tab" class="sub-content active">
+                    <div id="sell-section">
+                        <div class="checkGroup">
+                            <input type="checkbox" id="canSellItems" onchange="toggleSellItems()"> This NPC can sell items
                         </div>
-                        <div class="item-list" id="buy-items-list">
-                            <div class="item-entry">
-                                <input type="text" placeholder="Item ID" class="item-id">
-                                <input type="text" placeholder="Item Name" class="item-name">
-                                <input type="number" placeholder="Price" class="item-price" min="0">
-                                <button class="remove-item">Remove</button>
+                        
+                        <div id="sell-items-container" style="display: none; margin-top: 20px;">
+                            <div id="add-item-section">
+                                <div style="display: flex; gap: 10px; align-items: end; margin-bottom: 20px;">
+                                    <div class="input-group" style="margin-bottom: 0; position: relative;">
+                                        <label for="sell-item-name-input">Item Name</label>
+                                        <input type="text" id="sell-item-name-input" placeholder="Search item by name or ID" autocomplete="off">
+                                        <div id="sell-item-suggestions" class="suggestions-dropdown"></div>
+                                    </div>
+                                    <div class="input-group" style="margin-bottom: 0;">
+                                        <label for="sell-gold-coins-input">Gold Coins</label>
+                                        <input type="number" id="sell-gold-coins-input" placeholder="100" min="1">
+                                    </div>
+                                    <button id="add-sell-item-btn" onclick="addSellItem()">Add Item</button>
+                                </div>
+                            </div>
+                            
+                            <div id="sell-items-table-container">
+                                <table id="sell-items-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Name</th>
+                                            <th>Item ID</th>
+                                            <th>Gold</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="sell-items-tbody">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    
-                    <div id="sell-tab" class="tab-panel">
-                        <div class="item-search">
-                            <input type="text" id="sell-item-search" placeholder="Search items to sell...">
-                            <button id="add-sell-item">Add Item</button>
+                </div>
+                
+                <!-- Aba Buy -->
+                <div id="buy-tab" class="sub-content">
+                    <div id="buy-section">
+                        <div class="checkGroup">
+                            <input type="checkbox" id="canBuyItems" onchange="toggleBuyItems()"> This NPC can buy items
                         </div>
-                        <div class="item-list" id="sell-items-list">
-                            <div class="item-entry">
-                                <input type="text" placeholder="Item ID" class="item-id">
-                                <input type="text" placeholder="Item Name" class="item-name">
-                                <input type="number" placeholder="Price" class="item-price" min="0">
-                                <button class="remove-item">Remove</button>
+                        
+                        <div id="buy-items-container" style="display: none; margin-top: 20px;">
+                            <div id="add-buy-item-section">
+                                <div style="display: flex; gap: 10px; align-items: end; margin-bottom: 20px;">
+                                    <div class="input-group" style="margin-bottom: 0; position: relative;">
+                                        <label for="buy-item-name-input">Item Name</label>
+                                        <input type="text" id="buy-item-name-input" placeholder="Search item by name or ID" autocomplete="off">
+                                        <div id="buy-item-suggestions" class="suggestions-dropdown"></div>
+                                    </div>
+                                    <div class="input-group" style="margin-bottom: 0;">
+                                        <label for="buy-gold-coins-input">Gold Coins</label>
+                                        <input type="number" id="buy-gold-coins-input" placeholder="50" min="1">
+                                    </div>
+                                    <button id="add-buy-item-btn" onclick="addBuyItem()">Add Item</button>
+                                </div>
+                            </div>
+                            
+                            <div id="buy-items-table-container">
+                                <table id="buy-items-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Item Name</th>
+                                            <th>Item ID</th>
+                                            <th>Gold</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="buy-items-tbody">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
         <div id="talking" class="content">
-            <div class="talking-container">
-                <div class="talking-header">
-                    <h2>NPC Dialogue System</h2>
-                    <p>Configure the NPC's conversation responses</p>
+            <div id="talking-section">
+                <div class="talking-inputs">
+                    <div class="input-group">
+                        <label for="greets-message">Greets Message</label>
+                        <input type="text" id="greets-message" name="greets-message" value="Hello |PLAYERNAME|, you need more info about {canary}?">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="bye-message">Bye Message</label>
+                        <input type="text" id="bye-message" name="bye-message" value="Yeah, good bye and don't come again!">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="walkaway-message">Walkaway Message</label>
+                        <input type="text" id="walkaway-message" name="walkaway-message" value="You not have education?">
+                    </div>
+                    
+                    <div class="input-group" id="sell-message-group" style="display: none;">
+                        <label for="sell-message">Sell Message</label>
+                        <input type="text" id="sell-message" name="sell-message" value="Sold %ix %s for %i gold.">
+                    </div>
                 </div>
                 
-                <div class="dialogue-sections">
-                    <div class="dialogue-section">
-                        <h3>Greeting Messages</h3>
-                        <div class="message-list" id="greeting-messages">
-                            <div class="message-entry">
-                                <textarea placeholder="Enter greeting message..." class="message-text"></textarea>
-                                <button class="remove-message">Remove</button>
-                            </div>
-                        </div>
-                        <button class="add-message" data-type="greeting">Add Greeting</button>
-                    </div>
-                    
-                    <div class="dialogue-section">
-                        <h3>Farewell Messages</h3>
-                        <div class="message-list" id="farewell-messages">
-                            <div class="message-entry">
-                                <textarea placeholder="Enter farewell message..." class="message-text"></textarea>
-                                <button class="remove-message">Remove</button>
-                            </div>
-                        </div>
-                        <button class="add-message" data-type="farewell">Add Farewell</button>
-                    </div>
-                    
-                    <div class="dialogue-section">
-                        <h3>Default Responses</h3>
-                        <div class="message-list" id="default-messages">
-                            <div class="message-entry">
-                                <textarea placeholder="Enter default response..." class="message-text"></textarea>
-                                <button class="remove-message">Remove</button>
-                            </div>
-                        </div>
-                        <button class="add-message" data-type="default">Add Default Response</button>
-                    </div>
+                <div class="message-info" style="display: none;">
+                    <h3>Message Variables:</h3>
+                    <ul>
+                        <li><strong>|PLAYERNAME|</strong> - Player's name</li>
+                        <li><strong>{canary}</strong> - Server name placeholder</li>
+                        <li><strong>%ix</strong> - Item quantity (sell message)</li>
+                        <li><strong>%s</strong> - Item name (sell message)</li>
+                        <li><strong>%i</strong> - Gold amount (sell message)</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        
         <div id="keywords" class="content">
-            <div class="keywords-container">
-                <div class="keywords-header">
-                    <h2>Keyword Responses</h2>
-                    <p>Configure specific responses for keywords or phrases</p>
+            <div id="keywords-section">
+                <div class="checkGroup">
+                    <input type="checkbox" id="usesKeywords" onchange="toggleKeywords()"> This NPC uses keywords
                 </div>
                 
-                <div class="keyword-actions">
-                    <button id="add-keyword-btn">Add New Keyword</button>
-                </div>
-                
-                <div class="keywords-list" id="keywords-list">
-                    <div class="keyword-entry">
-                        <div class="keyword-inputs">
-                            <input type="text" placeholder="Keyword or phrase" class="keyword-text">
-                            <textarea placeholder="Response to this keyword..." class="keyword-response"></textarea>
+                <div id="keywords-container" style="display: none; margin-top: 20px;">
+                    <div id="add-keyword-section">
+                        <div style="display: flex; gap: 10px; align-items: end; margin-bottom: 20px;">
+                            <div class="input-group" style="margin-bottom: 0;">
+                                <label for="keyword-input">Keyword</label>
+                                <input type="text" id="keyword-input" placeholder="hi, help, trade...">
+                            </div>
+                            <div class="input-group" style="margin-bottom: 0; flex: 2;">
+                                <label for="response-input">Response</label>
+                                <input type="text" id="response-input" placeholder="Hello! How can I help you?">
+                            </div>
+                            <button id="add-keyword-btn" onclick="addKeyword()">Add</button>
                         </div>
-                        <div class="keyword-actions">
-                            <button class="remove-keyword">Remove</button>
-                        </div>
+                    </div>
+                    
+                    <div id="keywords-table-container">
+                        <table id="keywords-table">
+                            <thead>
+                                <tr>
+                                    <th>Keyword</th>
+                                    <th>Response</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="keywords-tbody">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="generate" class="content">
-            <div class="generate-container">
-                <div class="generate-header">
-                    <h2>Generate NPC Configuration</h2>
-                    <p>Generate the complete NPC configuration file</p>
-                </div>
-                
-                <div class="generate-options">
-                    <div class="option-group">
-                        <label>
-                            <input type="checkbox" id="include-basic" checked> Include Basic Settings
-                        </label>
-                        <label>
-                            <input type="checkbox" id="include-buy-sell" checked> Include Buy/Sell Configuration
-                        </label>
-                        <label>
-                            <input type="checkbox" id="include-talking" checked> Include Dialogue System
-                        </label>
-                        <label>
-                            <input type="checkbox" id="include-keywords" checked> Include Keyword Responses
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="generate-actions">
-                    <button id="generate-config">Generate Configuration</button>
-                    <button id="download-config">Download as File</button>
-                    <button id="copy-config">Copy to Clipboard</button>
-                </div>
-                
-                <div class="generated-output">
-                    <h3>Generated Configuration:</h3>
-                    <textarea id="config-output" readonly placeholder="Generated configuration will appear here..."></textarea>
-                </div>
+    <!-- Modal para exibir código gerado -->
+    <div id="generate-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Script NPC Gerado</h2>
+                <span class="close" onclick="closeGenerateModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <textarea id="generated-code" readonly placeholder="O código do NPC será gerado aqui..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="download-btn" onclick="downloadNPCScript()">Download</button>
             </div>
         </div>
     </div>
 
     <script src="scripts.js"></script>
     <script src="looktype.js"></script>
-    <script src="npc-manager.js"></script>
+    <script src="sell-items.js"></script>
+    <script src="buy-items.js"></script>
+    <script src="keywords.js"></script>
+    <script src="talking.js"></script>
+    <script src="npc-generator.js"></script>
     <script>
-        // Aguarda todos os scripts carregarem
-        document.addEventListener('DOMContentLoaded', function() {
-            // Carrega o componente looktype
-            fetch('looktype.html')
-                .then(response => response.text())
-                .then(html => {
-                    const container = document.getElementById('looktype-container');
-                    if (container) {
-                        container.innerHTML = html;
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar looktype:', error);
-                });
+        // Carrega o componente looktype
+        fetch('looktype.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('looktype-container').innerHTML = html;
+            });
             
-            // Sistema de navegação por abas
             const tabs = document.querySelectorAll('.tab-btn');
+
             tabs.forEach(tab => tab.addEventListener('click', () => tabClicked(tab)));
 
             const tabClicked = (tab) => {
-                // Remove active class from all tabs
-                tabs.forEach(t => t.classList.remove('active'));
+                tabs.forEach(tab => tab.classList.remove('active'));
                 tab.classList.add('active');
 
-                // Hide all content sections
                 const contents = document.querySelectorAll('.content');
                 contents.forEach(content => content.classList.remove('show'));
 
-                // Show the target content
                 const contentId = tab.getAttribute('content-id');
                 const content = document.getElementById(contentId);
 
                 if (content) {
                     content.classList.add('show');
+                } else {
+                    console.error(`Elemento com ID '${contentId}' não encontrado`);
                 }
             }
 
-            // Show basic tab by default
-            const basicTab = document.querySelector('.tab-btn[content-id="basic"]');
-            if (basicTab) {
-                tabClicked(basicTab);
-            }
-            
-            // Garantir que a seção basic seja exibida
-            const basicContent = document.getElementById('basic');
-            if (basicContent) {
-                basicContent.classList.add('show');
-            }
-        });
+            const currentActiveTab = document.querySelector('.tab-btn.active');
+            tabClicked(currentActiveTab);
     </script>
-
-    <style>
-        /* Estilos para as novas seções */
-        .content {
-            display: none;
-            padding: 20px;
-        }
-        
-        .content.show {
-            display: block;
-        }
-        
-        /* Buy/Sell Styles */
-        .buy-sell-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .buy-sell-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .buy-sell-header h2 {
-            color: #cecece;
-            margin-bottom: 10px;
-        }
-        
-        .buy-sell-header p {
-            color: #929292;
-        }
-        
-        .buy-sell-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            gap: 10px;
-        }
-        
-        .buy-sell-tab {
-            padding: 15px 30px;
-            font-size: 16px;
-        }
-        
-        .tab-panel {
-            display: none;
-        }
-        
-        .tab-panel.active {
-            display: block;
-        }
-        
-        .item-search {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .item-search input {
-            flex: 1;
-        }
-        
-        .item-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .item-entry {
-            display: grid;
-            grid-template-columns: 100px 1fr 150px 100px;
-            gap: 10px;
-            align-items: center;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid #636363;
-        }
-        
-        /* Talking Styles */
-        .talking-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .talking-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .talking-header h2 {
-            color: #cecece;
-            margin-bottom: 10px;
-        }
-        
-        .talking-header p {
-            color: #929292;
-        }
-        
-        .dialogue-sections {
-            display: grid;
-            gap: 30px;
-        }
-        
-        .dialogue-section {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border: 1px solid #636363;
-        }
-        
-        .dialogue-section h3 {
-            color: #cecece;
-            margin-bottom: 15px;
-        }
-        
-        .message-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .message-entry {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        
-        .message-entry textarea {
-            flex: 1;
-            min-height: 60px;
-            resize: vertical;
-        }
-        
-        /* Keywords Styles */
-        .keywords-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .keywords-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .keywords-header h2 {
-            color: #cecece;
-            margin-bottom: 10px;
-        }
-        
-        .keywords-header p {
-            color: #929292;
-        }
-        
-        .keyword-actions {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .keywords-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .keyword-entry {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border: 1px solid #636363;
-        }
-        
-        .keyword-inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .keyword-inputs textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-        
-        /* Generate Styles */
-        .generate-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .generate-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .generate-header h2 {
-            color: #cecece;
-            margin-bottom: 10px;
-        }
-        
-        .generate-header p {
-            color: #929292;
-        }
-        
-        .generate-options {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border: 1px solid #636363;
-            margin-bottom: 30px;
-        }
-        
-        .option-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .option-group label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #cecece;
-            cursor: pointer;
-        }
-        
-        .option-group input[type="checkbox"] {
-            width: auto;
-            margin: 0;
-        }
-        
-        .generate-actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .generated-output {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border: 1px solid #636363;
-        }
-        
-        .generated-output h3 {
-            color: #cecece;
-            margin-bottom: 15px;
-        }
-        
-        #config-output {
-            width: 100%;
-            min-height: 300px;
-            resize: vertical;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .item-entry {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-            
-            .generate-actions {
-                flex-direction: column;
-            }
-            
-            .option-group {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Additional improvements */
-        .tab-btn {
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn:hover {
-            background: hsla(0, 0%, 100%, 0.1);
-        }
-
-        .tab-btn.active {
-            background: hsla(0, 0%, 100%, 0.15);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-
-        .message-entry textarea,
-        .keyword-inputs textarea,
-        #config-output {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.4;
-        }
-
-        .item-entry input,
-        .message-entry textarea,
-        .keyword-inputs input,
-        .keyword-inputs textarea {
-            transition: border-color 0.3s ease;
-        }
-
-        .item-entry input:focus,
-        .message-entry textarea:focus,
-        .keyword-inputs input:focus,
-        .keyword-inputs textarea:focus {
-            border-color: #cecece;
-            outline: none;
-        }
-
-        /* Success/Error messages */
-        .message {
-            padding: 10px 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        .message.success {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            color: #90EE90;
-        }
-
-        .message.error {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            color: #FFB6C1;
-        }
-
-        /* Loading states */
-        .loading {
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        /* Tooltips */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
 </body>
 </html>
