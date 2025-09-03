@@ -85,10 +85,10 @@ async function loadMount() {
         </li>
     `).join('');
 
-    // Atualizar o mount atual com o primeiro da lista se existir
+    // Armazenar o primeiro mount como selecionado por padrão, mas não habilitado
     if (mounts.length > 0) {
-        window.currentMount = mounts[0].clientid;
-        window.updateCharacterImage();
+        window.selectedMountId = parseInt(mounts[0].clientid);
+        // Não atualizar currentMount aqui, pois mount deve começar desabilitado
     }
 }
 
@@ -135,7 +135,13 @@ function createMountSelector() {
         if (li) {
             const clientid = li.getAttribute('data-clientid');
             if (clientid) {
-                window.currentMount = clientid;
+                window.selectedMountId = parseInt(clientid);
+                
+                // Se o mount está habilitado, atualizar currentMount
+                if (window.mountEnabled) {
+                    window.currentMount = window.selectedMountId;
+                }
+                
                 window.updateCharacterImage();
 
                 // Remover seleção anterior e selecionar o novo item

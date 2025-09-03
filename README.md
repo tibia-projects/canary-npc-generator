@@ -1,191 +1,204 @@
 # Canary NPC Creator
 
-Um gerador visual e interativo de NPCs (Personagens Não-Jogáveis) para servidores Tibia Canary.
+A modern, web-based visual editor for creating NPCs (Non-Player Characters) for Canary OTServ. This tool provides an intuitive interface to configure all aspects of NPCs and generates ready-to-use Lua scripts.
 
-## 🎯 Funcionalidades
+![Canary NPC Creator](assets/imgs/bg.png)
 
-### ✨ Seção Basic
-- **Configurações Básicas**: Nome, vida, velocidade, raio de caminhada
-- **Sistema de Visualização**: Seleção de outfits masculinos/femininos
-- **Sistema de Montarias**: Mais de 200 montarias disponíveis
-- **Paleta de Cores**: 132 cores para personalizar cabeça, corpo, pernas e pés
-- **Visualização em Tempo Real**: Preview do personagem com todas as customizações
+## 🎯 Features
 
-### 💰 Seção Buy/Sell
-- **Configuração de Compra**: Define itens que o NPC pode comprar dos jogadores
-- **Configuração de Venda**: Define itens que o NPC pode vender aos jogadores
-- **Sistema de Preços**: Define preços individuais para cada item
-- **Interface Intuitiva**: Adicionar/remover itens facilmente
+### Visual Character Editor
+- **Outfit Selection**: Choose from 249+ available outfits for male/female characters
+- **Mount System**: Select from available mounts with enable/disable toggle
+- **Color Customization**: Full color palette for head, body, legs, and feet
+- **Addon System**: Support for Addon 1, Addon 2, or both (values: 0, 1, 2, 3)
+- **Real-time Preview**: Live character image updates as you make changes
 
-### 💬 Seção Talking
-- **Mensagens de Saudação**: Múltiplas opções de mensagens de boas-vindas
-- **Mensagens de Despedida**: Múltiplas opções de mensagens de despedida
-- **Respostas Padrão**: Respostas para quando o jogador não diz nada específico
-- **Sistema Flexível**: Adicionar quantas mensagens quiser
+### NPC Configuration
+- **Basic Settings**: Name, health, walk interval, walk radius, speed, floor change
+- **Shop System**: Configure items for buying and selling with prices
+- **Conversation System**: Custom greet, bye, walkaway, and sell messages
+- **Keywords System**: Add custom keyword-response pairs for NPC interactions
 
-### 🔑 Seção Keywords
-- **Respostas por Palavra-chave**: Define respostas específicas para palavras ou frases
-- **Sistema de Detecção**: O NPC responde baseado no que o jogador digita
-- **Múltiplas Keywords**: Configure quantas palavras-chave quiser
+### Code Generation
+- **Lua Script Export**: Generate complete NPC scripts compatible with Canary
+- **Download Functionality**: Save generated scripts as .lua files
+- **Template-based**: Uses proper Canary NPC structure and syntax
 
-### ⚙️ Seção Generate
-- **Geração de Configuração**: Cria arquivo de configuração completo
-- **Opções Seletivas**: Escolha quais seções incluir na configuração
-- **Download de Arquivo**: Baixa a configuração como arquivo .lua
-- **Copiar para Área de Transferência**: Copia a configuração para o clipboard
+## 🚀 Getting Started
 
-## 🚀 Como Usar
+### Prerequisites
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Local web server (optional, can run directly from file system)
 
-1. **Abra o arquivo `index.html`** em seu navegador
-2. **Configure a seção Basic**:
-   - Digite o nome do NPC
-   - Configure vida, velocidade e outros parâmetros
-   - Escolha o outfit e montaria
-   - Personalize as cores
-3. **Configure Buy/Sell** (opcional):
-   - Adicione itens que o NPC pode comprar/vender
-   - Defina os preços
-4. **Configure Talking** (opcional):
-   - Adicione mensagens de saudação, despedida e respostas padrão
-5. **Configure Keywords** (opcional):
-   - Adicione palavras-chave e suas respostas
-6. **Gere a Configuração**:
-   - Vá para a seção Generate
-   - Escolha quais seções incluir
-   - Clique em "Generate Configuration"
-   - Baixe ou copie o arquivo gerado
+### Installation
+1. Clone or download this repository
+2. Open `index.html` in your web browser
+3. Start creating your NPC!
 
-## 📁 Estrutura do Projeto
+### Usage
+1. **Configure Appearance**: Select outfit, colors, addons, and mount in the "Basic" tab
+2. **Set up Shop** (optional): Add items for buying/selling in the "Buy/Sell" tab
+3. **Configure Messages**: Customize NPC dialogue in the "Talking" tab
+4. **Add Keywords** (optional): Create custom responses in the "Keywords" tab
+5. **Generate Script**: Click "Generate" to create the Lua script
+6. **Download**: Save the generated .lua file to your server's NPC directory
+
+## 📁 Project Structure
 
 ```
-├── index.html              # Página principal
-├── scripts.js              # Lógica principal (outfits e montarias)
-├── looktype.js             # Sistema de cores e visualização
-├── looktype.html           # Componente de cores
-├── looktype.css            # Estilos do sistema de cores
-├── npc-manager.js          # Gerenciador das novas funcionalidades
-├── colors.html             # Paleta de cores completa
+itemeditor/
+├── index.html              # Main application file
+├── scripts.js              # Outfit and mount management
+├── looktype.js             # Character appearance and colors
+├── looktype.html           # Color palette component
+├── looktype.css            # Styling for looktype component
+├── sell-items.js           # Shop selling functionality
+├── buy-items.js            # Shop buying functionality
+├── keywords.js             # Keyword system management
+├── talking.js              # Conversation messages
+├── npc-generator.js        # Lua script generation
+├── colors.html             # Color palette reference
+├── npc-example.lua         # Template structure
 ├── assets/
-│   └── imgs/
-│       ├── bg.png          # Background
-│       └── bg-dark.png     # Background escuro
+│   └── imgs/               # Background images
 └── xml/
-    ├── outfits.xml         # Dados de roupas (200+ outfits)
-    └── mounts.xml          # Dados de montarias (200+ mounts)
+    ├── items.xml           # Items database (406 items)
+    ├── outfits.xml         # Outfits database (249 outfits)
+    └── mounts.xml          # Mounts database
 ```
 
-## 🛠️ Tecnologias Utilizadas
+## 🎨 Interface Overview
 
-- **HTML5** - Estrutura da aplicação
-- **CSS3** - Estilização com tema escuro
-- **JavaScript Vanilla** - Funcionalidades sem dependências externas
-- **XML** - Armazenamento de dados de outfits e montarias
-- **LocalStorage** - Persistência de dados local
-- **API Oracle Outfit Images** - Renderização de personagens
+### Navigation Tabs
+- **Basic**: Character appearance, outfit selection, basic NPC settings
+- **Buy/Sell**: Shop configuration with item management
+- **Talking**: Message customization with variable support
+- **Keywords**: Custom keyword-response system
 
-## 🎨 Características
+### Key Components
+- **Character Preview**: Real-time outfit visualization
+- **Color Palette**: Visual color selection tool
+- **Item Search**: Autocomplete search for items by name or ID
+- **Data Tables**: Organized display of shop items and keywords
 
-- **Interface Moderna**: Design escuro e elegante
-- **Responsivo**: Funciona em desktop e mobile
-- **Sem Dependências**: JavaScript puro, funciona offline
-- **Persistência**: Salva automaticamente suas configurações
-- **Visualização em Tempo Real**: Veja as mudanças instantaneamente
-- **Compatível com GitHub Pages**: Pode ser hospedado gratuitamente
+## 🔧 Technical Details
 
-## 📊 Dados Incluídos
+### Character Image URL Structure
+```
+https://outfit-images-oracle.ots.me/latest_walk/animoutfit.php?id={looktype}&addons={addons}&head={head}&body={body}&legs={legs}&feet={feet}&mount={mount}&direction=3
+```
 
-- **200+ Outfits**: Masculinos e femininos
-- **200+ Montarias**: Variedade de montarias disponíveis
-- **132 Cores**: Paleta completa do Tibia
-- **Sistema de Addons**: Suporte a addons 1 e 2
-- **Dados Oficiais**: Baseado no jogo Tibia oficial
+### Addon System Logic
+- **0**: No addons
+- **1**: Addon 1 only
+- **2**: Addon 2 only  
+- **3**: Both addons (1 + 2)
 
-## 🔧 Personalização
+### Mount System Logic
+- **0**: No mount (default or when checkbox unchecked)
+- **{mount_id}**: Specific mount ID when checkbox is checked
 
-O projeto é totalmente customizável:
+### Message Variables
+- `|PLAYERNAME|`: Player's name
+- `{canary}`: Server name placeholder
+- `%ix`: Item quantity (sell messages)
+- `%s`: Item name (sell messages)
+- `%i`: Gold amount (sell messages)
 
-- **Adicione novos outfits**: Edite `xml/outfits.xml`
-- **Adicione novas montarias**: Edite `xml/mounts.xml`
-- **Modifique cores**: Edite `looktype.html`
-- **Personalize estilos**: Edite os estilos CSS
-- **Adicione funcionalidades**: Estenda o `npc-manager.js`
+## 📊 Database Information
 
-## 📝 Formato de Saída
+### Items Database
+- **Total Items**: 406 items
+- **Categories**: Liquids, quest items, natural tiles, magic fields, etc.
+- **Format**: XML with ID, name, and attributes
 
-A configuração gerada é compatível com servidores Canary e inclui:
+### Outfits Database
+- **Total Outfits**: 249 outfits
+- **Types**: Female (type=0), Male (type=1)
+- **Categories**: Free, premium, quest-based, store items
+
+### Mounts Database
+- Various mounts with client IDs and names
+- Compatible with Canary mount system
+
+## 🛠️ Generated Script Structure
+
+The generated Lua scripts follow this structure:
+1. **NPC Configuration**: Name, health, appearance, flags
+2. **Shop Definition**: Buy/sell items with prices
+3. **Event Handlers**: Standard Canary NPC events
+4. **Custom Keywords**: User-defined keyword responses
+5. **Message Callbacks**: Greet, farewell, and interaction messages
+6. **Registration**: NPC type registration with Canary
+
+## 🎯 Example Generated Code
 
 ```lua
--- NPC Configuration Generated by Canary NPC Creator
+local npcName = "Shopkeeper"
 
--- Basic Configuration
-npc_name = "Nome do NPC"
-max_health = 100
-health_now = 100
-walk_interval = 1500
-walk_radius = 2
-speed = 100
-floor_change = false
+local npcType = Game.createNpcType(npcName)
+local npcConfig = {}
 
--- Appearance
-looktype = 136
-mount = 0
-head_color = 0
-primary_color = 0
-secondary_color = 0
-detail_color = 0
+npcConfig.name = npcName
+npcConfig.description = npcName
 
--- Buy/Sell Configuration
-buy_item(2160, "Crystal Coin", 10000)
-sell_item(2160, "Crystal Coin", 11000)
+npcConfig.health = 100
+npcConfig.maxHealth = 100
+npcConfig.walkInterval = 1500
+npcConfig.walkRadius = 2
 
--- Dialogue Configuration
-greeting_message("Bem-vindo, aventureiro!")
-farewell_message("Até logo!")
-default_message("Hmm...")
+npcConfig.outfit = {
+    lookType = 136,
+    lookHead = 0,
+    lookBody = 0,
+    lookLegs = 0,
+    lookFeet = 0,
+    lookAddons = 0,
+}
 
--- Keyword Responses
-keyword_response("quest", "Fale com o guarda sobre quests.")
+-- Shop, handlers, and callbacks...
+-- (Full structure based on user configuration)
+
+npcType:register(npcConfig)
 ```
 
-## 🌐 Hospedagem
+## 🌟 Features Highlights
 
-O projeto é compatível com GitHub Pages:
+- **No Installation Required**: Runs directly in web browser
+- **Real-time Preview**: See changes instantly
+- **Complete NPC System**: All Canary NPC features supported
+- **User-friendly Interface**: Intuitive design with dark theme
+- **Export Ready**: Generated scripts work immediately in Canary
+- **Extensible**: Easy to add new features or modify existing ones
 
-1. Faça upload dos arquivos para um repositório GitHub
-2. Vá em Settings > Pages
-3. Selecione a branch main
-4. Acesse o link gerado
+## 🤝 Contributing
 
-## 🤝 Contribuição
+This project is open for contributions! Feel free to:
+- Report bugs or issues
+- Suggest new features
+- Submit pull requests
+- Improve documentation
 
-Contribuições são bem-vindas! Para contribuir:
+## 📄 License
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
-5. Abra um Pull Request
+This project is open source and available under the MIT License.
 
-## 📄 Licença
+## 🔗 Compatibility
 
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+- **Server**: Canary OTServ
+- **Format**: Lua scripts
+- **Version**: Compatible with latest Canary versions
 
-## 🎮 Compatibilidade
+## 💡 Tips
 
-- **Servidores**: Canary, OTX, TFS
-- **Versões Tibia**: 12.x+
-- **Navegadores**: Chrome, Firefox, Safari, Edge
-- **Dispositivos**: Desktop, Tablet, Mobile
-
-## 📞 Suporte
-
-Se você encontrar algum problema ou tiver sugestões:
-
-1. Abra uma issue no GitHub
-2. Descreva o problema detalhadamente
-3. Inclua screenshots se necessário
-4. Especifique seu navegador e sistema operacional
+1. **Preview First**: Always check the character preview before generating
+2. **Test Keywords**: Verify keyword responses work as expected
+3. **Backup Scripts**: Keep copies of your generated NPC scripts
+4. **Item IDs**: Use the search function to find correct item IDs
+5. **Mount Selection**: Remember to check the mount checkbox to enable mounts
 
 ---
 
-**Desenvolvido com ❤️ para a comunidade Tibia** 
+**Created for the Canary OTServ community** 🕊️
+
+For support or questions, please open an issue in this repository. 

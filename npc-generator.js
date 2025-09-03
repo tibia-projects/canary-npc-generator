@@ -64,8 +64,8 @@ function collectNPCData() {
         lookBody: parseInt(window.currentPrimaryColor) || 0,
         lookLegs: parseInt(window.currentSecondaryColor) || 0,
         lookFeet: parseInt(window.currentDetailColor) || 0,
-        lookAddons: getAddonsValue(),
-        lookMount: parseInt(window.currentMount) || 0
+        lookAddons: parseInt(window.currentAddons) || 0,
+        lookMount: window.mountEnabled ? parseInt(window.selectedMountId) || 0 : 0
     };
     
     // Dados de mensagens
@@ -99,17 +99,7 @@ function collectNPCData() {
     };
 }
 
-// Função para obter valor dos addons
-function getAddonsValue() {
-    let addons = 0;
-    const addon1 = document.querySelector('input[name="addon1"]')?.checked;
-    const addon2 = document.querySelector('input[name="addon2"]')?.checked;
-    
-    if (addon1) addons += 1;
-    if (addon2) addons += 2;
-    
-    return addons;
-}
+
 
 // Função principal para gerar o script do NPC
 function generateNPCScript(data) {
