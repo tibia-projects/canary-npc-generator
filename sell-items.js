@@ -87,7 +87,7 @@ window.toggleSellItems = function() {
         container.style.display = 'none';
         // Limpar a lista de itens quando desabilitar
         window.sellItems = [];
-        updateSellItemsTable();
+        window.updateSellItemsTable();
     }
     
     // Atualizar visibilidade do campo sell message na aba Talking
@@ -143,11 +143,11 @@ window.addSellItem = function() {
     document.getElementById('sell-item-suggestions').style.display = 'none';
     
     // Atualizar a tabela
-    updateSellItemsTable();
+    window.updateSellItemsTable();
 };
 
 // Função para atualizar a tabela de itens de venda
-function updateSellItemsTable() {
+window.updateSellItemsTable = function() {
     const tbody = document.getElementById('sell-items-tbody');
     
     tbody.innerHTML = window.sellItems.map((item, index) => 
@@ -167,7 +167,7 @@ function updateSellItemsTable() {
 window.deleteSellItem = function(index) {
     if (confirm('Tem certeza que deseja excluir este item?')) {
         window.sellItems.splice(index, 1);
-        updateSellItemsTable();
+        window.updateSellItemsTable();
     }
 };
 
@@ -180,7 +180,7 @@ window.editSellItem = function(index) {
         const goldValue = parseInt(newGold);
         if (goldValue && goldValue > 0) {
             window.sellItems[index].gold = goldValue;
-            updateSellItemsTable();
+            window.updateSellItemsTable();
         } else {
             alert('Por favor, insira um valor válido de gold coins');
         }

@@ -81,6 +81,33 @@
             color: #cecece;
         }
 
+        /* Estilos para abas principais ativas */
+        .tab-btn {
+            border-top: 1px solid #636363;
+            border-left: 1px solid #636363;
+            border-right: 1px solid hsl(0deg 0% 0% / 25%);
+            border-bottom: 1px solid hsl(0deg 0% 0% / 25%);
+            padding: 10px 20px;
+            background: hsl(0deg 0% 100% / 2%);
+            color: #cecece;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: hsla(0, 0%, 0%, 0.2);
+        }
+
+        .tab-btn.active {
+            border-top: 1px solid hsl(0deg 0% 0% / 25%);
+            border-left: 1px solid hsl(0deg 0% 0% / 25%);
+            border-right: 1px solid #636363;
+            border-bottom: 1px solid #636363;
+            background: hsla(0, 0%, 0%, 0.349);
+            color: #fff;
+            font-weight: 500;
+        }
+
         label{
             color: #cecece;
         }
@@ -99,6 +126,7 @@
             display: flex;
             flex-direction: column;
             margin-bottom: 20px;
+            grid-gap: 6px;
         }
 
         .checkGroup{
@@ -140,7 +168,8 @@
 
         #topbar > #options{display:flex; grid-gap: 20px;}
         #topbar > #title{ display: flex; justify-content: center;}
-        #topbar > #languages{ display: flex; justify-content: flex-end; grid-gap: 20px;}
+        #topbar > #link{ display: flex; justify-content: flex-end; grid-gap: 20px; color: #cecece;}
+        #topbar > #link > span >a{ color: #cecece; text-decoration: none;}
 
         .basic-data{
             width: 900px;
@@ -156,7 +185,8 @@
             width: 100%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
+            grid-gap: 10px;
+            margin-top: 60px;
         }
 
         nav{
@@ -168,7 +198,7 @@
         }
 
         #npc-image{
-            margin-top: 50px;
+            margin-top: 29px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -188,11 +218,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             margin-top: 40px;
+            grid-gap: 20px;
         }
 
         #outfitList, #mountList {
             list-style: none;
-            max-height: 200px;
+            max-height: 223px;
             overflow-y: auto;
             background: #353535;
             padding: 10px;
@@ -511,6 +542,203 @@
             background: #45a049;
         }
 
+        /* Estilos para o modal de confirmação */
+        .confirm-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .confirm-modal-content {
+            background: url(assets/imgs/bg.png) repeat;
+            margin: 15% auto;
+            padding: 30px;
+            border: 1px solid #636363;
+            width: 400px;
+            color: #cecece;
+            text-align: center;
+        }
+
+        .confirm-modal h3 {
+            margin: 0 0 20px 0;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .confirm-modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .confirm-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .confirm-btn.yes {
+            background: #f44336;
+            color: white;
+        }
+
+        .confirm-btn.yes:hover {
+            background: #da190b;
+        }
+
+        .confirm-btn.no {
+            background: #666;
+            color: white;
+        }
+
+        .confirm-btn.no:hover {
+            background: #555;
+        }
+
+        /* Estilos para o modal de erro */
+        .error-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .error-modal-content {
+            background-color: #353535;
+            margin: 15% auto;
+            padding: 30px;
+            border: 1px solid #636363;
+            width: 350px;
+            border-radius: 5px;
+            color: #cecece;
+            text-align: center;
+        }
+
+        .error-modal h3 {
+            margin: 0 0 20px 0;
+            color: #f44336;
+            font-size: 18px;
+        }
+
+        .error-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+            margin-top: 15px;
+        }
+
+        .error-btn:hover {
+            background: #da190b;
+        }
+
+        /* Input de arquivo oculto */
+        #file-input {
+            display: none;
+        }
+
+        /* Estilos para o modal de help */
+        .help-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .help-modal-content {
+            background: url(assets/imgs/bg.png) repeat;
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid #636363;
+            width: 500px;
+            max-width: 90%;
+            color: #cecece;
+        }
+
+        .help-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #636363;
+        }
+
+        .help-modal-header h2 {
+            margin: 0;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .help-modal-body {
+            line-height: 1.6;
+        }
+
+        .help-modal-body h3 {
+            color: #4ecdc4;
+            margin: 20px 0 10px 0;
+            font-size: 16px;
+        }
+
+        .help-modal-body p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .help-modal-body .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .help-modal-body .info-item {
+            background: hsla(0, 0%, 0%, 0.2);
+            padding: 12px;
+            border-radius: 3px;
+            border: 1px solid #555;
+        }
+
+        .help-modal-body .info-item strong {
+            color: #4ecdc4;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .help-modal-body a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+
+        .help-modal-body a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
         .talking-inputs {
             display: flex;
             flex-direction: column;
@@ -561,20 +789,42 @@
             color: #4ecdc4;
             font-family: monospace;
         }
+
+        #genderSelector, .addons{
+            width: 114px;
+        }
+
+        #genderSelector{
+            height: 28px;
+            padding:0px 0px 0px 6px;
+        }
+
+        .addons{
+            font-size: 13px;
+        }
+
+        .addons .checkGroup{
+            height: 12px;
+        }
+
+        .characterContainer{
+            width: 114px;
+            max-width: 114px;
+        }
     </style>
 </head>
 <body>
     <header>
         <div id="topbar">
             <div id="options">
-                <span>New</span>
-                <span>Open</span>
+                <span onclick="showNewConfirmModal()" style="cursor: pointer;">New</span>
+                <span onclick="openNPCFile()" style="cursor: pointer;">Open</span>
                 <span onclick="generateNPC()" style="cursor: pointer;">Generate</span>
+                <span onclick="showHelpModal()" style="cursor: pointer;">Help</span>
             </div>
             <div id="title">Canary NPC Creator</div>
-            <div id="languages">
-                <span>English</span>
-                <span>Brazilian</span>
+            <div id="link">
+                <span><a href="https://discord.gg/opentibiabr" target="_blank">discord.gg/opentibiabr</a></span>
             </div>    
         </div>
 
@@ -601,7 +851,8 @@
                     </div>
                 </div>
     
-                <div>
+                <div class="characterContainer">
+                    <label for="">Preview</label>
                     <div id="npc-image">
                         <img class="character" src="" alt="">
                     </div>
@@ -853,6 +1104,85 @@
         </div>
     </div>
 
+    <!-- Modal de confirmação para New -->
+    <div id="new-confirm-modal" class="confirm-modal">
+        <div class="confirm-modal-content">
+            <h3>Warning</h3>
+            <p>You will lose all registered data, do you want to continue?</p>
+            <div class="confirm-modal-buttons">
+                <button class="confirm-btn yes" onclick="confirmNewNPC()">Yes</button>
+                <button class="confirm-btn no" onclick="closeNewConfirmModal()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input de arquivo oculto -->
+    <input type="file" id="file-input" accept=".lua" />
+
+    <!-- Modal de erro para arquivo inválido -->
+    <div id="error-modal" class="error-modal">
+        <div class="error-modal-content">
+            <h3>Error</h3>
+            <p>Enter a valid NPC file</p>
+            <button class="error-btn" onclick="closeErrorModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal de Help -->
+    <div id="help-modal" class="help-modal">
+        <div class="help-modal-content">
+            <div class="help-modal-header">
+                <h2>About Canary NPC Creator</h2>
+                <span class="close" onclick="closeHelpModal()">&times;</span>
+            </div>
+            <div class="help-modal-body">
+                <p>A modern, web-based visual editor for creating NPCs for Canary OTServ.</p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Version</strong>
+                        v1.0.0
+                    </div>
+                    <div class="info-item">
+                        <strong>Canary Version</strong>
+                        Compatible with latest
+                    </div>
+                    <div class="info-item">
+                        <strong>Developed by</strong>
+                        Eratsu feat. Claude
+                    </div>
+                    <div class="info-item">
+                        <strong>Built for</strong>
+                        Canary OTServ Community
+                    </div>
+                </div>
+
+                <h3>🎯 Features</h3>
+                <p>• Visual character editor with 249+ outfits</p>
+                <p>• Complete shop system (buy/sell items)</p>
+                <p>• Custom conversation messages</p>
+                <p>• Keywords system for interactions</p>
+                <p>• Real-time character preview</p>
+                <p>• Lua script generation and export</p>
+
+                <h3>🗄️ Database</h3>
+                <p>• <strong>items.xml</strong> loading all items</p>
+                <p>• <strong>outfits.xml</strong> (male/female) with addons</p>
+                <p>• <strong>mounts.xml</strong> with enable/disable toggle</p>
+
+                <h3>🔗 Links</h3>
+                <p>• <a href="https://github.com/opentibiabr/canary" target="_blank">Canary Repository</a></p>
+                <p>• <a href="https://discord.gg/opentibiabr" target="_blank">OpenTibia Brasil Community</a></p>
+                
+                <h3>💡 Tips</h3>
+                <p>• Use <strong>New</strong> to reset all data</p>
+                <p>• Use <strong>Open</strong> to load existing NPC files</p>
+                <p>• Use <strong>Generate</strong> to export Lua scripts</p>
+                <p>• Use <strong>Random</strong> for random character colors</p>
+            </div>
+        </div>
+    </div>
+
     <script src="scripts.js"></script>
     <script src="looktype.js"></script>
     <script src="sell-items.js"></script>
@@ -860,6 +1190,9 @@
     <script src="keywords.js"></script>
     <script src="talking.js"></script>
     <script src="npc-generator.js"></script>
+    <script src="new-npc.js"></script>
+    <script src="open-npc.js"></script>
+    <script src="help-modal.js"></script>
     <script>
         // Carrega o componente looktype
         fetch('looktype.html')

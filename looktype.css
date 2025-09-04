@@ -3,6 +3,7 @@
     flex-direction: column;
     grid-gap: 10px;
     justify-content: center;
+    margin-top: 10px;
 }
 
 #npc-body{
@@ -47,4 +48,8 @@
 .color-cell.selected {
     border: 2px solid #fff;
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.color-random button{
+    width: 100%;
 }

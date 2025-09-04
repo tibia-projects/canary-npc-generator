@@ -74,6 +74,28 @@ window.updateMount = function() {
     window.updateCharacterImage();
 };
 
+// Função para gerar cores aleatórias para todas as partes do corpo
+window.setNpcColorRandom = function() {
+    // Gerar cores aleatórias para cada parte do corpo
+    // Range de cores válidas: 0-131 (baseado na paleta de cores disponível)
+    const getRandomColor = () => Math.floor(Math.random() * 132);
+    
+    window.currentHeadColor = getRandomColor();
+    window.currentPrimaryColor = getRandomColor();
+    window.currentSecondaryColor = getRandomColor();
+    window.currentDetailColor = getRandomColor();
+    
+    // Atualizar a imagem do personagem
+    window.updateCharacterImage();
+    
+    console.log('Cores aleatórias aplicadas:', {
+        head: window.currentHeadColor,
+        primary: window.currentPrimaryColor,
+        secondary: window.currentSecondaryColor,
+        detail: window.currentDetailColor
+    });
+};
+
 // Inicializar quando o documento estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     window.updateCharacterImage();

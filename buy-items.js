@@ -23,7 +23,7 @@ window.toggleBuyItems = function() {
         container.style.display = 'none';
         // Limpar a lista de itens quando desabilitar
         window.buyItems = [];
-        updateBuyItemsTable();
+        window.updateBuyItemsTable();
     }
 };
 
@@ -101,11 +101,11 @@ window.addBuyItem = function() {
     document.getElementById('buy-item-suggestions').style.display = 'none';
     
     // Atualizar a tabela
-    updateBuyItemsTable();
+    window.updateBuyItemsTable();
 };
 
 // Função para atualizar a tabela de itens de compra
-function updateBuyItemsTable() {
+window.updateBuyItemsTable = function() {
     const tbody = document.getElementById('buy-items-tbody');
     
     tbody.innerHTML = window.buyItems.map((item, index) => 
@@ -125,7 +125,7 @@ function updateBuyItemsTable() {
 window.deleteBuyItem = function(index) {
     if (confirm('Tem certeza que deseja excluir este item?')) {
         window.buyItems.splice(index, 1);
-        updateBuyItemsTable();
+        window.updateBuyItemsTable();
     }
 };
 
@@ -138,7 +138,7 @@ window.editBuyItem = function(index) {
         const goldValue = parseInt(newGold);
         if (goldValue && goldValue > 0) {
             window.buyItems[index].gold = goldValue;
-            updateBuyItemsTable();
+            window.updateBuyItemsTable();
         } else {
             alert('Por favor, insira um valor válido de gold coins');
         }

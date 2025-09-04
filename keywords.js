@@ -12,7 +12,7 @@ window.toggleKeywords = function() {
         container.style.display = 'none';
         // Limpar a lista de keywords quando desabilitar
         window.npcKeywords = [];
-        updateKeywordsTable();
+        window.updateKeywordsTable();
     }
 };
 
@@ -51,14 +51,14 @@ window.addKeyword = function() {
     responseInput.value = '';
     
     // Atualizar a tabela
-    updateKeywordsTable();
+    window.updateKeywordsTable();
     
     // Focar no campo de keyword para facilitar adição de múltiplas keywords
     keywordInput.focus();
 };
 
 // Função para atualizar a tabela de keywords
-function updateKeywordsTable() {
+window.updateKeywordsTable = function() {
     const tbody = document.getElementById('keywords-tbody');
     
     tbody.innerHTML = window.npcKeywords.map((item, index) => 
@@ -77,7 +77,7 @@ function updateKeywordsTable() {
 window.deleteKeyword = function(index) {
     if (confirm('Tem certeza que deseja excluir esta keyword?')) {
         window.npcKeywords.splice(index, 1);
-        updateKeywordsTable();
+        window.updateKeywordsTable();
     }
 };
 
@@ -117,7 +117,7 @@ window.editKeyword = function(index) {
         response: trimmedResponse
     };
     
-    updateKeywordsTable();
+    window.updateKeywordsTable();
 };
 
 // Event listeners para a funcionalidade de keywords

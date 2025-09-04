@@ -192,21 +192,57 @@ function generateShopSection(shop) {
     let script = `-- Npc shop\n`;
     script += `npcConfig.shop = {\n`;
     
-    const allItems = [];
+    const itemsMap = new Map();
     
-    // Adicionar itens de venda
+    // Processar itens de venda (NPC vende para player - buy no arquivo)
     if (shop.canSell && shop.sellItems.length > 0) {
         shop.sellItems.forEach(item => {
-            allItems.push(`\t{ itemName = "${item.name}", clientId = ${item.id}, buy = ${item.gold} }`);
+            if (itemsMap.has(item.id)) {
+                // Item já existe, adicionar propriedade buy
+                itemsMap.get(item.id).buy = item.gold;
+            } else {
+                // Novo item
+                itemsMap.set(item.id, {
+                    name: item.name,
+                    id: item.id,
+                    buy: item.gold
+                });
+            }
         });
     }
     
-    // Adicionar itens de compra
+    // Processar itens de compra (NPC compra do player - sell no arquivo)
     if (shop.canBuy && shop.buyItems.length > 0) {
         shop.buyItems.forEach(item => {
-            allItems.push(`\t{ itemName = "${item.name}", clientId = ${item.id}, sell = ${item.gold} }`);
+            if (itemsMap.has(item.id)) {
+                // Item já existe, adicionar propriedade sell
+                itemsMap.get(item.id).sell = item.gold;
+            } else {
+                // Novo item
+                itemsMap.set(item.id, {
+                    name: item.name,
+                    id: item.id,
+                    sell: item.gold
+                });
+            }
         });
     }
+    
+    // Gerar as entradas do shop
+    const allItems = [];
+    itemsMap.forEach(item => {
+        let itemEntry = `\t{ itemName = "${item.name}", clientId = ${item.id}`;
+        
+        if (item.buy !== undefined) {
+            itemEntry += `, buy = ${item.buy}`;
+        }
+        if (item.sell !== undefined) {
+            itemEntry += `, sell = ${item.sell}`;
+        }
+        
+        itemEntry += ' }';
+        allItems.push(itemEntry);
+    });
     
     script += allItems.join(',\n') + '\n';
     script += `}\n\n`;
