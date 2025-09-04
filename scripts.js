@@ -156,6 +156,7 @@ function createMountSelector() {
 
 // Exportar funções para uso global
 window.readOutfitsXml = readOutfitsXml;
+window.readMountsXml = readMountsXml;
 window.loadOutfits = loadOutfits;
 window.createOutfitSelector = createOutfitSelector;
 window.createMountSelector = createMountSelector;

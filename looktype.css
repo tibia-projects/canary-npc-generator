@@ -50,6 +50,12 @@
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
+.color-random {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
 .color-random button{
     width: 100%;
 }
